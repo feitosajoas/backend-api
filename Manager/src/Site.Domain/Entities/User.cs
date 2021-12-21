@@ -14,6 +14,7 @@ namespace Site.Domain.Entities
             Name = name;
             Email = email;
             Password = password;
+            _erros = new List<string>();
         }
 
         public void ChangeName(string name)
@@ -32,6 +33,11 @@ namespace Site.Domain.Entities
         {
             Email = email;
             Validate();
+        }
+
+        public override bool Validade()
+        {
+
         }
     }
 }
