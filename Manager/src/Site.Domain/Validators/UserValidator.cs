@@ -1,8 +1,9 @@
 using FluentValidation;
+using Site.Domain.Entities;
 
 namespace Site.Domain.Validators
 {
-    public class UserValidator : AbstracValidator<User>
+    public class UserValidator : AbstractValidator<User>
     {
         public UserValidator()
         {
@@ -20,10 +21,10 @@ namespace Site.Domain.Validators
                 .NotEmpty()
                 .WithMessage("O nome não pode ser vazio.")
 
-                .MinimunLength(3)
+                .MinimumLength(3)
                 .WithMessage("O nome deve ter no mínimo 3 caracteres.")
 
-                .MinimunLength(80)
+                .MinimumLength(80)
                 .WithMessage("O nome deve ter no mínimo 3 caracteres.");
 
             RuleFor(x => x.Password)
@@ -33,10 +34,10 @@ namespace Site.Domain.Validators
                 .NotEmpty()
                 .WithMessage("A senha não pode ser vazio.")
 
-                .MinimunLength(6)
+                .MinimumLength(6)
                 .WithMessage("A senha deve ter no mínimo 6 caracteres.")
 
-                .MinimunLength(30)
+                .MinimumLength(30)
                 .WithMessage("A senha deve ter no mínimo 30 caracteres.");
 
             RuleFor(x => x.Email)
@@ -46,13 +47,13 @@ namespace Site.Domain.Validators
                 .NotEmpty()
                 .WithMessage("O email não pode ser vazio.")
 
-                .MinimunLength(10)
+                .MinimumLength(10)
                 .WithMessage("O email deve ter no mínimo 10 caracteres.")
 
-                .MinimunLength(180)
+                .MinimumLength(180)
                 .WithMessage("O email deve ter no mínimo 180 caracteres.")
 
-                .Matches() // TODO: Inserir validação de email
+                // .Matches() // TODO: Inserir validação de email
                 .WithMessage("O email informado não é válido");
         }
     }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Site.Domain.Validators;
 
 namespace Site.Domain.Entities
 {
@@ -16,7 +18,7 @@ namespace Site.Domain.Entities
             Name = name;
             Email = email;
             Password = password;
-            _erros = new List<string>();
+            _errors = new List<string>();
         }
 
         public void ChangeName(string name)
@@ -37,18 +39,20 @@ namespace Site.Domain.Entities
             Validate();
         }
 
-        public override bool Validade()
+        public override bool Validate()
         {
             var validator = new UserValidator();
-            var validation = validator.validate(this);
+            var validation = validator.Validate(this);
 
             if (!validation.IsValid)
             {
                 foreach (var error in validation.Errors)
                     _errors.Add(error.ErrorMessage);
 
-                throw new Exception("Alguns campos estão invalidos, por favor, corrija-os", _errors[0]);
+                throw new Exception("Alguns campos estão invalidos, por favor, corrija-os" + _errors[0]);
             }
+
+            return true;
         }
     }
 }
