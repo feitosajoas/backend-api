@@ -1,3 +1,5 @@
+using System;
+
 namespace Site.Domain.Entities
 {
     public class User : Base
@@ -37,7 +39,16 @@ namespace Site.Domain.Entities
 
         public override bool Validade()
         {
+            var validator = new UserValidator();
+            var validation = validator.validate(this);
 
+            if (!validation.IsValid)
+            {
+                foreach (var error in validation.Errors)
+                    _errors.Add(error.ErrorMessage);
+
+                throw new Exception("Alguns campos estão invalidos, por favor, corrija-os", _errors[0]);
+            }
         }
     }
 }
