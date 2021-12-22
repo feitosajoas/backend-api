@@ -6,8 +6,8 @@ namespace Site.Domain.Entities
     {
         public long Id { get; set; }
 
-        internal List<string> _erros;
-        public IReadOnlyCollection<string> Erros => _erros;
+        internal List<string> _errors;
+        public IReadOnlyCollection<string> Errors => _errors;
 
         public abstract bool Validate();
     }
