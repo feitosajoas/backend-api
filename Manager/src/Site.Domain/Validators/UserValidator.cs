@@ -26,6 +26,19 @@ namespace Site.Domain.Validators
                 .MinimunLength(80)
                 .WithMessage("O nome deve ter no mínimo 3 caracteres.");
 
+            RuleFor(x => x.Password)
+                .NotNull()
+                .WithMessage("A senha não pode ser nulo.")
+
+                .NotEmpty()
+                .WithMessage("A senha não pode ser vazio.")
+
+                .MinimunLength(6)
+                .WithMessage("A senha deve ter no mínimo 6 caracteres.")
+
+                .MinimunLength(30)
+                .WithMessage("A senha deve ter no mínimo 30 caracteres.");
+
             RuleFor(x => x.Email)
                 .NotNull()
                 .WithMessage("O email não pode ser nulo.")
