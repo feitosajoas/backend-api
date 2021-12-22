@@ -9,6 +9,6 @@ namespace Site.Domain.Entities
         internal List<string> _erros;
         public IReadOnlyCollection<string> Erros => _erros;
 
-        public abstract bool Validade();
+        public abstract bool Validate();
     }
 }
