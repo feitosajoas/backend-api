@@ -3,15 +3,18 @@ using System.Threading.Tasks;
 using Site.Domain.Entities;
 using Site.Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using Site.Infra.Context;
+using System.Collections.Generic;
+using System;
 
 namespace Site.Infra.Repositories
 {
     public class BaseRepository : IBaseRepository<T> where T : Base
     {
-        private readonly ManagerContext _context;
+        private readonly SiteContext _context;
 
-        public BaseRepository(ManagerContext context)
+        public BaseRepository(SiteContext context)
         {
             _context = context;
         }
