@@ -1,3 +1,9 @@
+using Site.Domain.Entities;
+using Site.Infra.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Site.Infra.Context;
+
 namespace Site.Infra.Repositories
 {
     public class UserRepository : BaseRepository<User>, IRepository
