@@ -10,7 +10,7 @@ using System;
 
 namespace Site.Infra.Repositories
 {
-    public class BaseRepository : IBaseRepository<T> where T : Base
+    public class BaseRepository<T> : IBaseRepository<T> where T : Base
     {
         private readonly SiteContext _context;
 
@@ -35,7 +35,7 @@ namespace Site.Infra.Repositories
             return obj;
         }
 
-        public virtual async Task<T> Remove(long id)
+        public virtual async Task Remove(long id)
         {
             var obj = await Get(id);
 
@@ -62,5 +62,10 @@ namespace Site.Infra.Repositories
                                  .AsNoTracking()
                                  .ToListAsync();
         }
-    }
+
+		Task<T> IBaseRepository<T>.Remove(long id)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

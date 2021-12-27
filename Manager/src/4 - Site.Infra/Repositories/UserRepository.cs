@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Site.Infra.Repositories
 {
-    public class UserRepository : IBaseRepository<User>, IRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         private readonly SiteContext _context;
 
