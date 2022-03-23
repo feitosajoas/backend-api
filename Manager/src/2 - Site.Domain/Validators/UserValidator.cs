@@ -24,8 +24,8 @@ namespace Site.Domain.Validators
                 .MinimumLength(3)
                 .WithMessage("O nome deve ter no mínimo 3 caracteres.")
 
-                .MinimumLength(80)
-                .WithMessage("O nome deve ter no mínimo 3 caracteres.");
+                .MaximumLength(80)
+                .WithMessage("O nome deve ter no máximo 80 caracteres.");
 
             RuleFor(x => x.Password)
                 .NotNull()
@@ -37,8 +37,8 @@ namespace Site.Domain.Validators
                 .MinimumLength(6)
                 .WithMessage("A senha deve ter no mínimo 6 caracteres.")
 
-                .MinimumLength(30)
-                .WithMessage("A senha deve ter no mínimo 30 caracteres.");
+                .MaximumLength(30)
+                .WithMessage("A senha deve ter no máximo 30 caracteres.");
 
             RuleFor(x => x.Email)
                 .NotNull()
@@ -50,8 +50,8 @@ namespace Site.Domain.Validators
                 .MinimumLength(10)
                 .WithMessage("O email deve ter no mínimo 10 caracteres.")
 
-                .MinimumLength(180)
-                .WithMessage("O email deve ter no mínimo 180 caracteres.")
+                .MaximumLength(180)
+                .WithMessage("O email deve ter no máximo 180 caracteres.")
 
                 // .Matches() // TODO: Inserir validação de email
                 .WithMessage("O email informado não é válido");
