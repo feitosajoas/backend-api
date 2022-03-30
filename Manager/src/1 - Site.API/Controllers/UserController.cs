@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,6 +7,7 @@ using Site.API.ViewModels;
 using Site.Core.Exceptions;
 using Site.Services.DTO;
 using Site.Services.Interface;
+using Site.API.Utilities;
 
 namespace Site.API.Controllers
 {
@@ -38,11 +40,11 @@ namespace Site.API.Controllers
             }
             catch (DomainException ex)
             {
-                return BadRequest();
+                return BadRequest(Responses.DomainErrorMessage(ex.Message, ex.Errors));
             }
             catch (Exception)
             {
-                return StatusCode(500, "Erro");
+                return StatusCode(500, Responses.ApplicationErrorMessage());
             }
         }
     }

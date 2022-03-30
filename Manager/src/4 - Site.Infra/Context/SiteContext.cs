@@ -11,13 +11,13 @@ namespace Site.Infra.Context
         { }
         public SiteContext(DbContextOptions<SiteContext> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql(
-                @"server=localhost;user=root;password=root;database=sitedb;",
-                new MySqlServerVersion(new Version(8, 0, 11))
-            );
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     optionsBuilder.UseMySql(
+        //         @"server=localhost;user=root;password=root;database=sitedb;",
+        //         new MySqlServerVersion(new Version(8, 0, 11))
+        //     );
+        // }
 
         public virtual DbSet<User> Users { get; set; }
 
